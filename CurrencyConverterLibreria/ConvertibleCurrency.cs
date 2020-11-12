@@ -26,9 +26,11 @@ namespace CurrencyConverterLibreria
             amount = val;
         }
 
-        public decimal ConvertTo(CurrencyType type)
+        private decimal ConvertToUS()
         {
-            decimal converted = amount;
+            decimal converted = 0.0M;
+            converted = amount;
+
             if (currency == CurrencyType.UK)
             {
                 converted = converted / UKInUS;
@@ -37,6 +39,22 @@ namespace CurrencyConverterLibreria
             {
                 converted = converted / AusInUS;
             }
+            return converted;
+        }
+
+
+        public decimal ConvertTo(CurrencyType type)
+        {
+            decimal converted = ConvertToUS();
+            converted = ConvertFromUS(type, converted);
+            return converted;
+
+        }
+
+        private decimal ConvertFromUS(CurrencyType type, decimal USAmount)
+        {
+            decimal converted = 0.0M;
+            converted = USAmount;
 
             if (type == CurrencyType.UK)
             {
@@ -48,6 +66,7 @@ namespace CurrencyConverterLibreria
             }
             return converted;
         }
+
 
     }
 }

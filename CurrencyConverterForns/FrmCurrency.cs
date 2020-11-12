@@ -52,11 +52,10 @@ namespace CurrencyConverterForms
         public static decimal CurrencyConvert(decimal amount, CurrencyType fromCur, CurrencyType toCur)
         {
             decimal converted = 0.0M;
-            ConvertibleCurrency currency =new ConvertibleCurrency(fromCur, amount);
+            ConvertibleCurrency currency = new ConvertibleCurrency(fromCur, amount);
             converted = currency.ConvertTo(toCur);
             return converted;
         }
-
 
         private void ToUS_CheckedChanged(object sender, EventArgs e)
         {
