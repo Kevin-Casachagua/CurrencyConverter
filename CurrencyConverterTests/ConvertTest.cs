@@ -1,6 +1,8 @@
 ﻿using System;
 using CurrencyConverterForms;
+using CurrencyConverterLibreria;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 
 namespace CurrencyConverterTests
 {
@@ -44,6 +46,24 @@ namespace CurrencyConverterTests
             expected = amount / 0.5M * 2;
             Assert.AreEqual(expected, result, "UK to AUS is incorrect");
         }
+
+        [TestMethod]
+        public void ConvertTo()
+        {
+            ConvertibleCurrency currency;
+            decimal result;
+            decimal expected;
+
+            currency = new ConvertibleCurrency(CurrencyType.US, 100.0M);
+            result = currency.ConvertTo(CurrencyType.US);
+            Assert.AreEqual(100.0M, result, "US to US should be no change");
+
+            currency = new ConvertibleCurrency(CurrencyType.AUS, 100.0M);
+            result = currency.ConvertTo(CurrencyType.UK);
+            expected = 100.0M / 2 * 0.5M;
+            Assert.AreEqual(expected, result, "AUS to UK incorrect result");
+        }
+
 
     }
 }

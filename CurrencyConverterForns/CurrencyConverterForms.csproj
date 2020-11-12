@@ -79,6 +79,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CurrencyConverterLibreria\CurrencyConverterLibreria.csproj">
+      <Project>{6eca80cb-96a6-4cf8-b91c-43bb50da7dba}</Project>
+      <Name>CurrencyConverterLibreria</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
